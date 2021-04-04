@@ -40,7 +40,7 @@ console.log(buff_o)
 ```
 
 Generally, its apis are similar to the `Buffer` of **Node.js**. Besides, you can access the elements of the 
-generated array via its index, either **get** or **set**.
+generated array via its index.
 
 ```javascript
 const Bytes = require('bytesse');
