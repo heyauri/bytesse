@@ -1,53 +1,57 @@
 const byte = function (num) {
-    if(!num || Math.abs(num)<128){
+    if (!num || Math.abs(num) < 128) {
         return num;
-    }else if(Math.abs(num)===128){
+    } else if (Math.abs(num) === 128) {
         return -128;
-    }else {
-        return num>0 ? byte(num%128 - 128) : byte(num%128 + 128);
+    } else {
+        return num > 0 ? byte(num % 128 - 128) : byte(num % 128 + 128);
     }
 }
-class Bytes{
+
+class Bytes {
     constructor() {
+        let _this = this;
         this.Array = [];
-        return new Proxy(this,{
-            get(target,index){
-                switch (index) {
-                    case "alloc":
-                        return target.alloc;
-                    case  "Array":
-                        return target.Array;
-                    default:
-                        return target.Array[index];
+        return new Proxy(_this, {
+            get(target, index) {
+                if (index in target) {
+                    return target[index];
+                } else {
+                    return target.Array[index];
                 }
             },
-            set(target,index,val){
+            set(target, index, val) {
                 target.Array[index] = byte(val);
             }
         })
     }
-    alloc(size,val){
+
+    alloc(size, val) {
         this.Array.length = size;
+        this.Array.fill(val || 0);
+    }
+
+    fill(val) {
         this.Array.fill(val || 0);
     }
 }
 
-const alloc = function(size,val){
+const alloc = function (size, val) {
     let b = new Bytes();
-    b.alloc(size,val);
+    b.alloc(size, val);
     return b;
 }
 
-const from = function(input){
+const from = function (input) {
     let buff = Buffer.from(input);
     let b = alloc(buff.length);
-    for(let i=0;i<buff.length;i++){
+    for (let i = 0; i < buff.length; i++) {
         b[i] = buff.readInt8(i);
     }
     return b;
 }
 
-module.exports={
+module.exports = {
     alloc,
     from
 }

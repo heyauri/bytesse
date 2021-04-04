@@ -4,7 +4,7 @@ Utility to generate a Java Byte[] like Array.
 Every element of the generated array is store as an Int8 number rather than an UInt8 number
 ( i.e. it ranges from -128 to 127 instead of 0-255 ).
 
-**Why not use Buffer.readInt8?**
+**Why not using Buffer.readInt8?**
 
 Our aim is to view the value of these bytes-array directly and clearly, which make our debug jobs in a specific 
 project easier (and more comfortable).
@@ -62,3 +62,4 @@ console.log(b);
      }
 */
 ```
+
