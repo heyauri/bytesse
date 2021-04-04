@@ -9,26 +9,26 @@ const byte = function (num) {
 }
 class Bytes{
     constructor() {
-        this.arr = [];
+        this.Array = [];
         return new Proxy(this,{
             get(target,index){
                 switch (index) {
                     case "alloc":
                         return target.alloc;
-                    case  "arr":
-                        return target.arr;
+                    case  "Array":
+                        return target.Array;
                     default:
-                        return target.arr[index];
+                        return target.Array[index];
                 }
             },
             set(target,index,val){
-                target.arr[index] = byte(val);
+                target.Array[index] = byte(val);
             }
         })
     }
     alloc(size,val){
-        this.arr.length = size;
-        this.arr.fill(val || 0);
+        this.Array.length = size;
+        this.Array.fill(val || 0);
     }
 }
 
