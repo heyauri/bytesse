@@ -1,12 +1,23 @@
 {
   "name": "bytesse",
   "version": "0.1.0",
-  "description": "",
+  "description": "Utility to generate a Java Byte[] like Array. ",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruiyeah/bytesse.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["byte","java byte"],
+  "keywords": ["bytes","java byte","buffer"],
   "author": "ruiyeah",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ruiyeah/bytesse/issues"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "homepage": "https://github.com/ruiyeah/bytesse#readme"
 }
